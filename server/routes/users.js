@@ -7,7 +7,7 @@ const faker = require('faker');
 router.get('/', function(req, res, next) {
   const address = faker.address;
   res.send(
-    {"name":"bob"}
+    {"name": address.country()}
   )
 });
 
