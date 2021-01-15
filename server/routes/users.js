@@ -7,7 +7,10 @@ const faker = require('faker');
 router.get('/', function(req, res, next) {
   const address = faker.address;
   res.send(
-    {"name": address.country()}
+    {
+      "firstname": faker.name.firstName(),
+      "lastname": faker.name.lastName() 
+    }
   )
 });
 
