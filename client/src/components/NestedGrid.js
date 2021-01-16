@@ -4,19 +4,18 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-//import tileData from './tileData';
+import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: 750,
+    height: 1000,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -42,16 +41,6 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function NestedGrid() {
   const classes = useStyles();
-  const tileData = [];
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-    .then(response=>response.json())
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err=>console.log(err))
-  }, [])
   
   return (
     <div className={classes.root}>
@@ -59,9 +48,9 @@ export default function NestedGrid() {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Images</ListSubheader>
         </GridListTile>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
+        {tileData.data.children.map((tile) => (
+          <GridListTile key={tile.data.thumbnail}>
+            <img src={tile.data.url} alt={tile.data.thumbnail} />
           </GridListTile>
         ))}
       </GridList>
