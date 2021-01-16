@@ -57,10 +57,6 @@ function App() {
     .catch(err=>console.log(err))
   }
 
-  const loadImage = async(event) => {
-    //Does nothing yet
-  }
-
   return (
     <div className="app">
       
@@ -78,7 +74,7 @@ function App() {
         </Button>
 
         <br></br>
-        
+
         <div className="app__grid">
           <NestedGrid></NestedGrid>
         </div>
