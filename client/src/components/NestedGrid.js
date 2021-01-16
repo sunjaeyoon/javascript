@@ -45,11 +45,11 @@ export default function NestedGrid() {
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+        <GridListTile key="Subheader" cols={2} rows={6} style={{ height: 'auto' }}>
           <ListSubheader component="div">Images</ListSubheader>
         </GridListTile>
         {tileData.data.children.map((tile) => (
-          <GridListTile key={tile.data.thumbnail}>
+          <GridListTile rows={3} key={tile.data.thumbnail}>
             <img src={tile.data.url} alt={tile.data.thumbnail} />
           </GridListTile>
         ))}
