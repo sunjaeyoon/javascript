@@ -5,3 +5,7 @@
 .app__body {
   text-align: center;
 }
+
+.app__grid {
+  margin: 10px;
+}
