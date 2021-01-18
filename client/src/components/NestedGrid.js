@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -41,14 +41,27 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function NestedGrid() {
   const classes = useStyles();
+  const [image, setImage] = useState([]);
   
+  useEffect(() => {
+    const getData = () => {
+      fetch("https://www.reddit.com/r/wallpaper/new.json?count=25")
+      .then(response=>response.json())
+      .then(data=>{
+        setImage(data);
+        console.log(data)
+      })
+    };
+    getData();
+  }, [])
+
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} rows={6} style={{ height: 'auto' }}>
           <ListSubheader component="div">Images</ListSubheader>
         </GridListTile>
-        {tileData.data.children.map((tile) => (
+        {image.data.children.map((tile) => (
           <GridListTile rows={3} key={tile.data.thumbnail}>
             <img src={tile.data.url} alt={tile.data.thumbnail} />
           </GridListTile>
